@@ -1,8 +1,9 @@
 # Dr. Pogodin Babel Preset SVGR
+![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr?style=plastic)
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
 inclusion of SVG graphics into React applications (~1.8M weekly downloads).
-It is provides SVGR Webpack loader, Node API, and CLI tool, but there was no
+It provides SVGR Webpack loader, Node API, and CLI tool, but there was no
 way before to use it with Babel (see https://github.com/smooth-code/svgr/issues/306,
 https://github.com/smooth-code/svgr/issues/252).
 
