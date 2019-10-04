@@ -1,0 +1,46 @@
+{
+  "name": "@dr.pogodin/babel-preset-svgr",
+  "version": "1.0.0",
+  "description": "Babel preset for SVG inclusion into React apps using Babel and SVGR.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/birdofpreyru/babel-preset-svgr",
+  "bugs": {
+    "url": "https://github.com/birdofpreyru/babel-preset-svgr/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/birdofpreyru/babel-preset-svgr.git"
+  },
+  "keywords": [
+    "SVGR",
+    "babel",
+    "parser",
+    "plugin",
+    "babel-parser",
+    "babel-plugin",
+    "SVG",
+    "React"
+  ],
+  "author": "Dr. Sergey Pogodin aka birdofpreyru",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.15.1",
+    "eslint-plugin-react-hooks": "^1.7.0"
+  },
+  "dependencies": {
+    "@svgr/core": "^4.3.3",
+    "@svgr/plugin-jsx": "^4.3.3",
+    "@svgr/plugin-prettier": "^4.3.2",
+    "@svgr/plugin-svgo": "^4.3.1"
+  },
+  "peerDependencies": {
+    "@babel/parser": "^7.6.2"
+  }
+}
