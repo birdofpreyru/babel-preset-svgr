@@ -22,6 +22,17 @@ module.exports = function plugin(api, ops) {
               '@svgr/plugin-prettier',
             ],
           });
+
+          /* Create React App setup for SVG images returns transformed React
+           * component as `ReactComponent` export, and the original SVG path
+           * as the default export. */
+          if (ops.mimicCreateReactApp) {
+            code = code.replace(
+              /export default SvgComponent;\n$/,
+              `export const ReactComponent = SvgComponent;
+              export default "${opts.sourceFileName}";`,
+            );
+          }
         }
         return parser(code, opts);
       },
