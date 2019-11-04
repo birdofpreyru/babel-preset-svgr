@@ -1,8 +1,9 @@
-# Dr. Pogodin Babel Preset SVGR
+# Babel Preset SVGR
+![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr?style=plastic)
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
 inclusion of SVG graphics into React applications (~1.8M weekly downloads).
-It is provides SVGR Webpack loader, Node API, and CLI tool, but there was no
+It provides SVGR Webpack loader, Node API, and CLI tool, but there was no
 way before to use it with Babel (see https://github.com/smooth-code/svgr/issues/306,
 https://github.com/smooth-code/svgr/issues/252).
 
@@ -10,6 +11,11 @@ This preset provides the way to transform SVG files into React components with
 SVGR and Babel. It works with any Babel setup (Babel CLI, `@babel/node`,
 `@babel/register`, Webpack `babel-loader`). If you use Hot Module Reloading
 in React, SVGs processed with this preset are correctly reloaded when changed.
+
+### Content
+- [Setup](#setup)
+- [Under the hood](#under-the-hood)
+- [Compatibility with Create React App](#compatibility-with-create-react-app)
 
 ### Setup
 
@@ -86,9 +92,36 @@ Example of options usage:
     "@babel/react",
     ["@dr.pogodin/babel-preset-svgr", {
       "parser": "custom-babel-parser",
+      "mimicCreateReactApp": true,
       "svgr": {
         "plugins": []
       }
+    }]
+  ]
+}
+```
+
+### Compatibility with Create React App
+
+Create React App set ups webpack to transform SVG components in the following
+way:
+
+- The react component itself is exported as `ReactComponent` named export.
+- The original SVG path is exported as the default export.
+
+Thus, the users export SVG assets like:
+```js
+import originalPath, { ReactComponent } from './asset.svg';
+```
+
+This preset mimics such behavior when `mimicCreateReactApp` option is set:
+```json
+{
+  "presets": [
+    "@babel/env",
+    "@babel/react",
+    ["@dr.pogodin/babel-preset-svgr", {
+      "mimicCreateReactApp": true
     }]
   ]
 }
