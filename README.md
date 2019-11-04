@@ -110,7 +110,7 @@ way:
 - The react component itself is exported as `ReactComponent` named export.
 - The original SVG path is exported as the default export.
 
-Thus, the users export SVG assets like:
+Thus, the users import SVG assets like:
 ```js
 import originalPath, { ReactComponent } from './asset.svg';
 ```
