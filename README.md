@@ -3,15 +3,15 @@
 # Babel Preset SVGR
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
-inclusion of SVG graphics into React applications (~1.8M weekly downloads).
-It provides SVGR Webpack loader, Node API, and CLI tool, but there was no
+SVG images embed into React applications (~1.8M weekly downloads).
+It provides SVG Webpack loader, Node API, and CLI tool, but there was no
 way before to use it with Babel (see https://github.com/smooth-code/svgr/issues/306,
 https://github.com/smooth-code/svgr/issues/252).
 
-This preset provides the way to transform SVG files into React components with
+This preset allows to transform SVG files into React components with
 SVGR and Babel. It works with any Babel setup (Babel CLI, `@babel/node`,
 `@babel/register`, Webpack `babel-loader`). If you use Hot Module Reloading
-in React, SVGs processed with this preset are correctly reloaded when changed.
+in React, SVGs handled by this preset are correctly reloaded when changed.
 
 ### Content
 - [Setup](#setup)
@@ -22,9 +22,9 @@ in React, SVGs processed with this preset are correctly reloaded when changed.
 
 1.  Install the preset `npm install --save-dev @dr.pogodin/babel-preset-svgr`
     (depending on your setup, you may need to use `--save` flag to save it as
-    a regular dependency, rather than a development one).
+    a regular dependency, rather than the development one).
 
-2.  Adds the preset to your Babel config, e.g.
+2.  Add the preset to your Babel config, e.g.
     ```json
     {
       "presets": [
@@ -69,17 +69,18 @@ in React, SVGs processed with this preset are correctly reloaded when changed.
       In a separate pass you'll compile JS(X) files as usual. The dedicated
       pass is necessary, as Babel currently either replaces all output file
       extensions to `.js`, or keeps all original ones. In our case we need
-      to keep `.svg` extensions only.
+      to keep `.svg` extensions only
+      ([corresponding feature request in the Babel repo](https://github.com/babel/babel/issues/10551)).
 
 ### Under the Hood
 
-This preset wraps the standard Babel parser into a simple logic that checks
-for `.svg` extensions of input, and if met, it runs input code through SVGR
-before passing it to the Babel parser. For other file types it just passes
-the code into Babel parser directly.
+This preset wraps the standard Babel parser into a simple logic which checks
+for `.svg` extensions of input, and if met, it runs the input code through SVGR
+before passing it to the Babel parser. For other file types it passes
+the code directly into Babel parser.
 
-If your project already depends on a customized Babel parser, you can pass
-its path into `parser` option of this preset. It will `require()` and use
+If your project already depends on a customized Babel parser, you can provide
+its path via the `parser` option of this preset. It will `require()` and use
 your parser then.
 
 You also can pass in custom SVGR options via `svgr` field.
@@ -102,15 +103,28 @@ Example of options usage:
 }
 ```
 
+By default this preset uses these SVGR options, following the library
+recommendations:
+
+```json
+{
+  "plugins": [
+    "@svgr/plugin-svgo",
+    "@svgr/plugin-jsx",
+    "@svgr/plugin-prettier"
+  ]
+}
+```
+
 ### Compatibility with Create React App
 
-Create React App set ups webpack to transform SVG components in the following
+Create React App sets up webpack to transform SVG components in the following
 way:
 
-- The react component itself is exported as `ReactComponent` named export.
+- The React component itself is exported as `ReactComponent` named export.
 - The original SVG path is exported as the default export.
 
-Thus, the users import SVG assets like:
+Thus, users import SVG assets like:
 ```js
 import originalPath, { ReactComponent } from './asset.svg';
 ```
