@@ -1,4 +1,8 @@
-![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr?style=plastic)
+![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-preset-svgr.svg)
+![Master Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/babel-preset-svgr/master.svg?label=master)
+![Dev Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/babel-preset-svgr/develop.svg?label=develop)
+![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)
+[![Donate](https://img.shields.io/badge/PayPal-Gratuity_Is_Greately_Appreciated-brightgreen?logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WTB2P9S2WVB8N)
 
 # Babel Preset SVGR
 
@@ -154,9 +158,4 @@ work on my other open source projects:
 - [React Utils](https://www.npmjs.com/package/@dr.pogodin/react-utils)
 - [React Starter](https://github.com/birdofpreyru/react-starter)
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="WTB2P9S2WVB8N" />
-<input type="image" src="https://www.paypalobjects.com/en_US/ES/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_ES/i/scr/pixel.gif" width="1" height="1" />
-</form>
+[![Donate](https://www.paypalobjects.com/en_US/ES/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WTB2P9S2WVB8N)
