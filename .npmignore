@@ -1,0 +1,4 @@
+__tests__
+.*
+jest.config.js
+dr.pogodin-babel-preset-svgr-*.tgz
