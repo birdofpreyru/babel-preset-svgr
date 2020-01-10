@@ -17,6 +17,7 @@ in React, SVGs handled by this preset are correctly reloaded when changed.
 - [Setup](#setup)
 - [Under the hood](#under-the-hood)
 - [Compatibility with Create React App](#compatibility-with-create-react-app)
+- [Gratuity Is Greately Appreciated](#gratuity-is-greately-appreciated)
 
 ### Setup
 
@@ -141,3 +142,21 @@ This preset mimics such behavior when `mimicCreateReactApp` option is set:
   ]
 }
 ```
+
+### Gratuity Is Greately Appreciated
+
+Should this preset be helpful to you, consider to make a donation to
+the developer. Your support is greately appreciated and will help me to
+work on my other open source projects:
+
+- [React Global State](https://www.npmjs.com/package/@dr.pogodin/react-global-state)
+- [React Themes](https://www.npmjs.com/package/@dr.pogodin/react-themes)
+- [React Utils](https://www.npmjs.com/package/@dr.pogodin/react-utils)
+- [React Starter](https://github.com/birdofpreyru/react-starter)
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="WTB2P9S2WVB8N" />
+<input type="image" src="https://www.paypalobjects.com/en_US/ES/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_ES/i/scr/pixel.gif" width="1" height="1" />
+</form>
