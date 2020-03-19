@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Babel preset for SVG inclusion into React apps using Babel and SVGR.",
   "main": "index.js",
   "scripts": {
@@ -40,10 +40,10 @@
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "jest": "^25.1.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "dependencies": {
     "@svgr/core": "^5.2.0",
