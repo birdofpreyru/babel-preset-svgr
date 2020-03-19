@@ -147,22 +147,36 @@ This preset mimics such behavior when `mimicCreateReactApp` option is set:
 }
 ```
 
-By default, `originalPath` will be the absolute original path to each asset.
-You can opt for relative paths instead, setting preset options like this:
+By default, `originalPath` will be equal to the absolute path of each asset.
+In some cases you may want in different, and to cover such cases an object with
+additional options can be passed to `mimicCreateReactApp`:
 ```js
-{
-  "mimicCreateReactApp": {
-    "pathsRelativeTo": "/base/path"
-  }
-}
+// .babelrc.js
+
+module.exports = {
+  presets: [
+    '@babel/env',
+    '@babel/react',
+    ['@dr.pogodin/babel-preset-svgr', {
+      mimicCreateReactApp: {
+        pathsRelativeTo: __dirname,
+        pathsTransform: (path) => `some/prefix/${path}`,
+      },
+    }],
+  ],
+};
 ```
-The value of `pathsRelativeTo` can be relative itself, in this case it will be
-resolved relative to the preset script, _e.g._ setting
-`"pathsRelativeTo": "../../.."` will result in `originalPath` resolved relative
-to the root of your project, because the preset, by default, is installed into
-`node_modules/@dr.pogodin/babel-preset-svgr` of your project, hence `../../..`
-will point to its root, thus `originalPath` will be generated relative to
-the root.
+
+- If `pathsRelativeTo` option is set, `originalPath` will be relative to its
+  value. If `pathsRelativeTo` is relative, it is resolved from the current
+  working directory.
+- If `pathsTransform` options is set, it should be a function which takes one
+  argument - the `originalPath`, and returns the path that should be output into
+  the transformed SVG.
+
+Of course, `__dirname` and functions can be used only inside JS variation of
+Babel config, thus the example above displays `.babelrc.js` file, which can be
+used instead of `.babelrc` starting from Babel@7.
 
 ### Gratuity Is Greately Appreciated
 
