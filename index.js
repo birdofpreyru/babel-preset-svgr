@@ -1,3 +1,4 @@
+const path = require('path');
 const { parse } = require('@babel/parser');
 const svgr = require('@svgr/core').default.sync;
 
@@ -27,10 +28,17 @@ module.exports = function plugin(api, ops) {
            * component as `ReactComponent` export, and the original SVG path
            * as the default export. */
           if (ops.mimicCreateReactApp) {
+            let sourcePath = opts.sourceFileName;
+            if (ops.mimicCreateReactApp.pathsRelativeTo) {
+              sourcePath = path.relative(
+                ops.mimicCreateReactApp.pathsRelativeTo,
+                sourcePath,
+              );
+            }
             code = code.replace(
               /export default SvgComponent;\n$/,
               `export const ReactComponent = SvgComponent;
-              export default "${opts.sourceFileName}";`,
+              export default "${sourcePath}";`,
             );
           }
         }

@@ -135,7 +135,7 @@ import originalPath, { ReactComponent } from './asset.svg';
 ```
 
 This preset mimics such behavior when `mimicCreateReactApp` option is set:
-```json
+```js
 {
   "presets": [
     "@babel/env",
@@ -146,6 +146,23 @@ This preset mimics such behavior when `mimicCreateReactApp` option is set:
   ]
 }
 ```
+
+By default, `originalPath` will be the absolute original path to each asset.
+You can opt for relative paths instead, setting preset options like this:
+```js
+{
+  "mimicCreateReactApp": {
+    "pathsRelativeTo": "/base/path"
+  }
+}
+```
+The value of `pathsRelativeTo` can be relative itself, in this case it will be
+resolved relative to the preset script, _e.g._ setting
+`"pathsRelativeTo": "../../.."` will result in `originalPath` resolved relative
+to the root of your project, because the preset, by default, is installed into
+`node_modules/@dr.pogodin/babel-preset-svgr` of your project, hence `../../..`
+will point to its root, thus `originalPath` will be generated relative to
+the root.
 
 ### Gratuity Is Greately Appreciated
 
