@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/react",
+    ["../../index", {
+      "mimicCreateReactApp": {
+        "pathsRelativeTo": "__tests__/mimic-create-react-app_paths-relative-to"
+      }
+    }]
+  ]
+}

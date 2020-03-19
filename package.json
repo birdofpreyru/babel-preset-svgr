@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Babel preset for SVG inclusion into React apps using Babel and SVGR.",
   "main": "index.js",
   "scripts": {
