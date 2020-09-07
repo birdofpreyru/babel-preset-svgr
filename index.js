@@ -22,6 +22,9 @@ module.exports = function plugin(api, ops) {
               '@svgr/plugin-jsx',
               '@svgr/plugin-prettier',
             ],
+            svgoConfig: {
+              plugins: [{ removeViewBox: false }],
+            },
           });
 
           /* Create React App setup for SVG images returns transformed React
