@@ -1,7 +1,7 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
   "version": "1.1.0",
-  "description": "Babel preset for SVG inclusion into React apps using Babel and SVGR.",
+  "description": "Babel preset for SVG import into React apps.",
   "main": "index.js",
   "scripts": {
     "jest": "jest --no-cache --config",
@@ -29,19 +29,19 @@
   "author": "Dr. Sergey Pogodin aka birdofpreyru",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^25.2.6",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
-    "jest": "^25.2.7",
+    "babel-jest": "^26.3.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "jest": "^26.4.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -52,6 +52,6 @@
     "@svgr/plugin-svgo": "^5.4.0"
   },
   "peerDependencies": {
-    "@babel/parser": "^7.6.2"
+    "@babel/parser": "^7.11.5"
   }
 }

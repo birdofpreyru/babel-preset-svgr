@@ -7,9 +7,9 @@
 # Babel Preset SVGR
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
-SVG images embed into React applications (~1.8M weekly downloads).
+importing SVG images into React applications (~1.8M weekly downloads).
 It provides SVG Webpack loader, Node API, and CLI tool, but there was no
-way before to use it with Babel (see https://github.com/smooth-code/svgr/issues/306,
+way to use it with Babel (see https://github.com/smooth-code/svgr/issues/306,
 https://github.com/smooth-code/svgr/issues/252).
 
 This preset allows to transform SVG files into React components with
