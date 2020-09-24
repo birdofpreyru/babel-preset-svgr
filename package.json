@@ -1,10 +1,10 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Babel preset for SVG import into React apps.",
   "main": "index.js",
   "scripts": {
-    "jest": "jest --no-cache --config",
+    "jest": "jest --no-cache",
     "lint": "eslint .",
     "test": "npm run lint && npm run jest"
   },

@@ -42,7 +42,7 @@ module.exports = function plugin(api, ops) {
               sourcePath = ops.mimicCreateReactApp.pathsTransform(sourcePath);
             }
             code = code.replace(
-              /export default SvgComponent;\n$/,
+              /export default SvgComponent;/,
               `export const ReactComponent = SvgComponent;
               export default "${sourcePath}";`,
             );
