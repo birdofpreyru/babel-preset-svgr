@@ -1,6 +1,22 @@
-const path = require('path');
 const { parse } = require('@babel/parser');
 const svgr = require('@svgr/core').default.sync;
+
+/**
+ * Clones the specified object field (or assigns an empty object to the field,
+ * if it does not exist), and returns the cloned field value.
+ *
+ * BEWARE: It mutates the object.
+ *
+ * @param {object} obj
+ * @param {string} field
+ * @return {object}
+ */
+function cloneFieldOfObjectType(obj, field) {
+  /* eslint-disable no-param-reassign */
+  obj[field] = obj[field] ? { ...obj[field] } : {};
+  /* eslint-enable no-param-reassign */
+  return obj[field];
+}
 
 module.exports = function plugin(api, ops) {
   let parser = parse;
@@ -11,42 +27,36 @@ module.exports = function plugin(api, ops) {
     /* eslint-enable global-require, import/no-dynamic-require */
   }
 
+  let svgrOptions = ops.svgr || {
+    plugins: [
+      '@svgr/plugin-svgo',
+      '@svgr/plugin-jsx',
+      '@svgr/plugin-prettier',
+    ],
+    svgoConfig: {
+      plugins: [{ removeViewBox: false }],
+    },
+  };
+
+  const mimicCraOps = {};
+  if (ops.mimicCreateReactApp) {
+    Object.assign(mimicCraOps, ops.mimicCreateReactApp);
+    svgrOptions = { ...svgrOptions };
+    let d = cloneFieldOfObjectType(svgrOptions, 'jsx');
+    d = cloneFieldOfObjectType(d, 'babelConfig');
+    d.plugins = [
+      [`${__dirname}/src/mimic-cra`, mimicCraOps],
+      ...d.plugins || [],
+    ];
+  }
+
   return {
     plugins: [{
       parserOverride(codeOrSvg, opts) {
         let code = codeOrSvg;
         if (opts.sourceFileName.endsWith('.svg')) {
-          code = svgr(codeOrSvg, ops.svgr || {
-            plugins: [
-              '@svgr/plugin-svgo',
-              '@svgr/plugin-jsx',
-              '@svgr/plugin-prettier',
-            ],
-            svgoConfig: {
-              plugins: [{ removeViewBox: false }],
-            },
-          });
-
-          /* Create React App setup for SVG images returns transformed React
-           * component as `ReactComponent` export, and the original SVG path
-           * as the default export. */
-          if (ops.mimicCreateReactApp) {
-            let sourcePath = opts.sourceFileName;
-            if (ops.mimicCreateReactApp.pathsRelativeTo) {
-              sourcePath = path.relative(
-                ops.mimicCreateReactApp.pathsRelativeTo,
-                sourcePath,
-              );
-            }
-            if (ops.mimicCreateReactApp.pathsTransform) {
-              sourcePath = ops.mimicCreateReactApp.pathsTransform(sourcePath);
-            }
-            code = code.replace(
-              /export default SvgComponent;/,
-              `export const ReactComponent = SvgComponent;
-              export default "${sourcePath}";`,
-            );
-          }
+          mimicCraOps.sourceFileName = opts.sourceFileName;
+          code = svgr(codeOrSvg, svgrOptions);
         }
         return parser(code, opts);
       },

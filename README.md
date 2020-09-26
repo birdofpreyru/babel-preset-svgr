@@ -90,6 +90,12 @@ your parser then.
 
 You also can pass in custom SVGR options via `svgr` field.
 
+**BEWARE:** According to SVGR recommendations, three plugins mentioned below
+(`@svgr/plugin-svgo`, `@svgr/plugin-jsx`, and `@svgr/plugin-prettier`) are used
+by default, if you specify no custom SVGR options. The first two of them are
+MUST TO HAVE for successful SVG to JSX transformation, thus if you configure
+custom plugins, don't foget to include these two explicitly.
+
 Example of options usage:
 
 ```json
@@ -101,22 +107,13 @@ Example of options usage:
       "parser": "custom-babel-parser",
       "mimicCreateReactApp": true,
       "svgr": {
-        "plugins": []
+        "plugins": [
+          "@svgr/plugin-svgo",
+          "@svgr/plugin-jsx",
+          "@svgr/plugin-prettier"
+        ]
       }
     }]
-  ]
-}
-```
-
-By default this preset uses these SVGR options, following the library
-recommendations:
-
-```json
-{
-  "plugins": [
-    "@svgr/plugin-svgo",
-    "@svgr/plugin-jsx",
-    "@svgr/plugin-prettier"
   ]
 }
 ```
