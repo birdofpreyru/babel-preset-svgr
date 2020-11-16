@@ -2,7 +2,6 @@
  * Tests the preset used without any options.
  */
 
-import React from 'react';
 import ReactDOM from 'react-dom/server';
 
 import Logo1 from './logo-1.svg';
