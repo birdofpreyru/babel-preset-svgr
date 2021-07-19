@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Babel preset for SVG import into React apps.",
   "main": "index.js",
   "scripts": {
