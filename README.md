@@ -69,7 +69,7 @@ in React, SVGs handled by this preset are correctly reloaded when changed.
     - If you use Babel CLI and specify individual file(s) to compile, it will
       work out of the box for SVGs. If you use it to compile entire directories
       you'll need a dedicated compilation pass for SVG files with the flags
-      `--extensions '.svg' --keep-file-extensions`. In this dedicated pass
+      `--extensions '.svg' --keep-file-extension`. In this dedicated pass
       Babel will only compile SVG assets, and it will keep their extensions.
       In a separate pass you'll compile JS(X) files as usual. The dedicated
       pass is necessary, as Babel currently either replaces all output file
