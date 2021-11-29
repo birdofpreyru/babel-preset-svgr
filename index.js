@@ -1,5 +1,5 @@
 const { parse } = require('@babel/parser');
-const svgr = require('@svgr/core').default.sync;
+const { transform } = require('@svgr/core');
 
 /**
  * Clones the specified object field (or assigns an empty object to the field,
@@ -34,7 +34,14 @@ module.exports = function plugin(api, ops) {
       '@svgr/plugin-prettier',
     ],
     svgoConfig: {
-      plugins: [{ removeViewBox: false }],
+      plugins: [{
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+          },
+        },
+      }],
     },
   };
 
@@ -56,7 +63,10 @@ module.exports = function plugin(api, ops) {
         let code = codeOrSvg;
         if (opts.sourceFileName.endsWith('.svg')) {
           mimicCraOps.sourceFileName = opts.sourceFileName;
-          code = svgr(codeOrSvg, svgrOptions);
+          code = transform.sync(codeOrSvg, svgrOptions, {
+            componentName: 'SvgComponent',
+            filePath: opts.sourceFileName,
+          });
         }
         return parser(code, opts);
       },
