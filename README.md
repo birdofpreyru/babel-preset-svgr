@@ -1,10 +1,8 @@
-![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-preset-svgr.svg)
-![Master Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/babel-preset-svgr/master.svg?label=master)
-![Dev Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/babel-preset-svgr/develop.svg?label=develop)
-![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)
-[![Donate](https://img.shields.io/badge/PayPal-Gratuity_Is_Greately_Appreciated-brightgreen?logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WTB2P9S2WVB8N)
-
 # Babel Preset SVGR
+
+[![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-preset-svgr.svg) ![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
+[![Donate](https://img.shields.io/badge/PayPal-Gratuity_Is_Greately_Appreciated-brightgreen?logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WTB2P9S2WVB8N)
+[![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/babel-preset-svgr?style=social)](https://github.com/birdofpreyru/babel-preset-svgr)
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
 importing SVG images into React applications (~1.8M weekly downloads).
@@ -19,7 +17,7 @@ in React, SVGs handled by this preset are correctly reloaded when changed.
 
 ### Content
 - [Setup](#setup)
-- [Under the hood](#under-the-hood)
+- [Under the Hood](#under-the-hood)
 - [Compatibility with Create React App](#compatibility-with-create-react-app)
 - [Gratuity Is Greately Appreciated](#gratuity-is-greately-appreciated)
 
