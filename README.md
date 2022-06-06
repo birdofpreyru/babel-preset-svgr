@@ -1,6 +1,7 @@
 # Babel Preset SVGR
 
-[![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-preset-svgr.svg) ![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
+[![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-preset-svgr.svg)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
+[![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
 [![Donate](https://img.shields.io/badge/PayPal-Gratuity_Is_Greately_Appreciated-brightgreen?logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WTB2P9S2WVB8N)
 [![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/babel-preset-svgr?style=social)](https://github.com/birdofpreyru/babel-preset-svgr)
 
