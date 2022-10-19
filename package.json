@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Babel preset for SVG import into React apps.",
   "main": "index.js",
   "scripts": {
@@ -29,28 +29,28 @@
   "author": "Dr. Sergey Pogodin aka birdofpreyru",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.18.9",
-    "@babel/preset-env": "^7.18.9",
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
     "@babel/preset-react": "^7.18.6",
-    "babel-jest": "^28.1.3",
-    "eslint": "^8.20.0",
+    "babel-jest": "^29.2.1",
+    "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.6.0",
-    "eslint-plugin-jsx-a11y": "^6.6.0",
-    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-jest": "^27.1.3",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^28.1.3",
+    "jest": "^29.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@svgr/core": "^6.3.0",
-    "@svgr/plugin-jsx": "^6.2.1",
-    "@svgr/plugin-prettier": "^6.3.0",
-    "@svgr/plugin-svgo": "^6.3.0"
+    "@svgr/core": "^6.5.0",
+    "@svgr/plugin-jsx": "^6.5.0",
+    "@svgr/plugin-prettier": "^6.5.0",
+    "@svgr/plugin-svgo": "^6.5.0"
   },
   "peerDependencies": {
-    "@babel/parser": "^7.18.9"
+    "@babel/parser": "^7.19.4"
   }
 }
