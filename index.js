@@ -57,6 +57,18 @@ module.exports = function plugin(api, ops) {
     ];
   }
 
+  {
+    // SVGR 6.5.0 (adopted in the v1.5.0 of this preset) added role="img"
+    // attribute to generated SVGs, which was considered a breaking change.
+    // However, SVGR 6.5.1 reverted that, and removed role attrbute from
+    // generated SVGs, unless opted-in explicitly via svgProps.role option.
+    // To avoid unnecessary revert of a breaking change, we just default
+    // svgProps.role option to "img", thus keeping adding role="img" by default.
+    const p = svgrOptions.svgProps;
+    if (!p) svgrOptions.svgProps = { role: 'img' };
+    else if (p.role === undefined) p.role = 'img';
+  }
+
   return {
     plugins: [{
       parserOverride(codeOrSvg, opts) {

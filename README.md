@@ -2,7 +2,6 @@
 
 [![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-preset-svgr.svg)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
 [![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
-[![Donate](https://img.shields.io/badge/PayPal-Gratuity_Is_Greately_Appreciated-brightgreen?logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WTB2P9S2WVB8N)
 [![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/babel-preset-svgr?style=social)](https://github.com/birdofpreyru/babel-preset-svgr)
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
@@ -16,11 +15,12 @@ SVGR and Babel. It works with any Babel setup (Babel CLI, `@babel/node`,
 `@babel/register`, Webpack `babel-loader`). If you use Hot Module Reloading
 in React, SVGs handled by this preset are correctly reloaded when changed.
 
+[![Sponsor](.README/sponsor.png)](https://github.com/sponsors/birdofpreyru)
+
 ### Content
 - [Setup](#setup)
 - [Under the Hood](#under-the-hood)
 - [Compatibility with Create React App](#compatibility-with-create-react-app)
-- [Gratuity Is Greately Appreciated](#gratuity-is-greately-appreciated)
 
 ### Setup
 
@@ -173,16 +173,3 @@ module.exports = {
 Of course, `__dirname` and functions can be used only inside JS variation of
 Babel config, thus the example above displays `.babelrc.js` file, which can be
 used instead of `.babelrc` starting from Babel@7.
-
-### Gratuity Is Greately Appreciated
-
-Should this preset be helpful to you, consider to make a donation to
-the developer. Your support is greately appreciated and will help me to
-work on my other open source projects:
-
-- [React Global State](https://www.npmjs.com/package/@dr.pogodin/react-global-state)
-- [React Themes](https://www.npmjs.com/package/@dr.pogodin/react-themes)
-- [React Utils](https://www.npmjs.com/package/@dr.pogodin/react-utils)
-- [React Starter](https://github.com/birdofpreyru/react-starter)
-
-[![Donate](https://www.paypalobjects.com/en_US/ES/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WTB2P9S2WVB8N)
