@@ -53,7 +53,8 @@ jobs:
             - node_modules
       - run: npm test
   release:
-    <<: *defaults
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
