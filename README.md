@@ -2,6 +2,7 @@
 
 [![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/babel-preset-svgr.svg)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
 [![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/birdofpreyru/babel-preset-svgr/tree/master.svg?style=shield)](https://app.circleci.com/pipelines/github/birdofpreyru/babel-preset-svgr)
 [![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/babel-preset-svgr?style=social)](https://github.com/birdofpreyru/babel-preset-svgr)
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
@@ -24,9 +25,12 @@ in React, SVGs handled by this preset are correctly reloaded when changed.
 
 ### Setup
 
-1.  Install the preset `npm install --save-dev @dr.pogodin/babel-preset-svgr`
-    (depending on your setup, you may need to use `--save` flag to save it as
-    a regular dependency, rather than the development one).
+1.  Install the preset
+    ```shell
+    npm install --save-dev @dr.pogodin/babel-preset-svgr
+    ```
+    Depending on your setup, you may need to use `--save` flag to save it as
+    a regular dependency, rather than the development one.
 
 2.  Add the preset to your Babel config, e.g.
     ```json

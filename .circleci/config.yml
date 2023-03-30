@@ -1,18 +1,54 @@
-defaults: &defaults
-  docker:
-    - image: cimg/node:14.20.1
-
 version: 2
 jobs:
-  test:
-    <<: *defaults
+  test-node-14: # Maintenance LTS, end-of-life April 30, 2023
+    docker:
+      - image: cimg/node:14.21
     steps:
       - checkout
       - restore_cache:
-          key: node-modules-{{ checksum "package-lock.json" }}
+          key: node-modules-14-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: node-modules-{{ checksum "package-lock.json" }}
+          key: node-modules-14-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm test
+  test-node-16: # Maintenance LTS, end-of-life September 11, 2023
+    docker:
+      - image: cimg/node:16.19
+    steps:
+      - checkout
+      - restore_cache:
+          key: node-modules-16-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: node-modules-16-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm test
+  test-node-18: # Active LTS, end-of-life April 30, 2025
+    docker:
+      - image: cimg/node:18.15
+    steps:
+      - checkout
+      - restore_cache:
+          key: node-modules-18-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: node-modules-18-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm test
+  test-node-19: # Current, end-of-life June 1, 2023
+    docker:
+      - image: cimg/node:19.8
+    steps:
+      - checkout
+      - restore_cache:
+          key: node-modules-19-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: node-modules-19-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run: npm test
@@ -23,14 +59,23 @@ jobs:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: npm publish --access public
 
+test-filters: &test-filters
+  filters:
+    tags:
+      only: /.*/
+
 workflows:
   version: 2
   build:
     jobs:
-      - test:
-          filters:
-            tags:
-              only: /.*/
+      - test-node-14:
+          <<: *test-filters
+      - test-node-16:
+          <<: *test-filters
+      - test-node-18:
+          <<: *test-filters
+      - test-node-19:
+          <<: *test-filters
       - release:
           filters:
             branches:
@@ -38,4 +83,7 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
           requires:
-            - test
+            - test-node-14
+            - test-node-16
+            - test-node-18
+            - test-node-19
