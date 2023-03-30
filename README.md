@@ -6,7 +6,7 @@
 [![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/babel-preset-svgr?style=social)](https://github.com/birdofpreyru/babel-preset-svgr)
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
-importing SVG images into React applications (~1.8M weekly downloads).
+importing SVG images into React applications (~5.8M weekly downloads).
 It provides SVG Webpack loader, Node API, and CLI tool, but there was no
 way to use it with Babel (see https://github.com/smooth-code/svgr/issues/306,
 https://github.com/smooth-code/svgr/issues/252).
