@@ -4,7 +4,7 @@
 [![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/babel-preset-svgr)](https://www.npmjs.com/package/@dr.pogodin/babel-preset-svgr)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/birdofpreyru/babel-preset-svgr/tree/master.svg?style=shield)](https://app.circleci.com/pipelines/github/birdofpreyru/babel-preset-svgr)
 [![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/babel-preset-svgr?style=social)](https://github.com/birdofpreyru/babel-preset-svgr)
-[![Dr. Pogodin Studio](.README/logo-dr-pogodin-studio.svg)](https://dr.pogodin.studio/docs/babel-preset-svgr)
+[![Dr. Pogodin Studio](https://raw.githubusercontent.com/birdofpreyru/babel-preset-svgr/master/.README/logo-dr-pogodin-studio.svg)](https://dr.pogodin.studio/docs/babel-preset-svgr)
 
 [SVGR](https://github.com/smooth-code/svgr) is the most popular library for
 importing SVG images into React applications (~5.8M weekly downloads).
@@ -17,7 +17,7 @@ SVGR and Babel. It works with any Babel setup (Babel CLI, `@babel/node`,
 `@babel/register`, Webpack `babel-loader`). If you use Hot Module Reloading
 in React, SVGs handled by this preset are correctly reloaded when changed.
 
-[![Sponsor](.README/sponsor.svg)](https://github.com/sponsors/birdofpreyru)
+[![Sponsor](https://raw.githubusercontent.com/birdofpreyru/babel-preset-svgr/master/.README/sponsor.svg)](https://github.com/sponsors/birdofpreyru)
 
 ### Content
 - [Setup](#setup)
