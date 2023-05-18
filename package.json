@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Babel preset for SVG import into React apps.",
   "main": "index.js",
   "scripts": {
@@ -29,11 +29,11 @@
   "author": "Dr. Sergey Pogodin <doc@pogodin.studio> (https://dr.pogodin.studio)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.21.3",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
     "@babel/preset-react": "^7.18.6",
     "babel-jest": "^29.5.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.40.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jest": "^27.2.1",
@@ -45,12 +45,12 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@svgr/core": "^7.0.0",
-    "@svgr/plugin-jsx": "^7.0.0",
-    "@svgr/plugin-prettier": "^7.0.0",
-    "@svgr/plugin-svgo": "^7.0.0"
+    "@svgr/core": "^8.0.0",
+    "@svgr/plugin-jsx": "^8.0.1",
+    "@svgr/plugin-prettier": "^8.0.1",
+    "@svgr/plugin-svgo": "^8.0.1"
   },
   "peerDependencies": {
-    "@babel/parser": "^7.21.3"
+    "@babel/parser": "^7.21.8"
   }
 }
