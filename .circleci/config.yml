@@ -1,44 +1,36 @@
-version: 2
+install-and-test: &install-and-test
+  - checkout
+  - restore_cache:
+      key: node-modules-{{ checksum "package-lock.json" }}
+  - run: npm install
+  - save_cache:
+      key: node-modules-{{ checksum "package-lock.json" }}
+      paths:
+        - node_modules
+  - run: npm test
+
+version: 2.1
 jobs:
-  test-node-16: # Maintenance, EOL 2023.09.11
+  test-node-18: # Maintenance, EOL 2025.04.30
     docker:
-      - image: cimg/node:16.20
+      - image: cimg/node:18.20
     steps:
-      - checkout
-      - restore_cache:
-          key: node-modules-16-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - save_cache:
-          key: node-modules-16-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - run: npm test
-  test-node-18: # LTS, EOL 2025.04.30
+      *install-and-test
+  test-node-20: # LTS, EOL 2026.04.30
     docker:
-      - image: cimg/node:18.17
+      - image: cimg/node:20.12
     steps:
-      - checkout
-      - restore_cache:
-          key: node-modules-18-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - save_cache:
-          key: node-modules-18-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - run: npm test
-  test-node-20: # Current, EOL 2026.04.30
+      *install-and-test
+  test-node-21: # Maintenance, EOL 2024.06.01
     docker:
-      - image: cimg/node:20.5
+      - image: cimg/node:21.7
     steps:
-      - checkout
-      - restore_cache:
-          key: node-modules-20-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - save_cache:
-          key: node-modules-20-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - run: npm test
+      *install-and-test
+  test-node-22: # Current, EOL 2027.04.30
+    docker:
+      - image: cimg/node:22.1
+    steps:
+      *install-and-test
   release:
     docker:
       - image: cimg/node:lts
@@ -63,11 +55,13 @@ workflows:
   version: 2
   build:
     jobs:
-      - test-node-16:
-          <<: *test-filters
       - test-node-18:
           <<: *test-filters
       - test-node-20:
+          <<: *test-filters
+      - test-node-21:
+          <<: *test-filters
+      - test-node-22:
           <<: *test-filters
       - release:
           filters:
@@ -76,6 +70,7 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
           requires:
-            - test-node-16
             - test-node-18
             - test-node-20
+            - test-node-21
+            - test-node-22
