@@ -16,19 +16,19 @@ jobs:
       - image: cimg/node:18.20
     steps:
       *install-and-test
-  test-node-20: # LTS, EOL 2026.04.30
+  test-node-20: # Maintenance, EOL 2026.04.30
     docker:
-      - image: cimg/node:20.12
+      - image: cimg/node:20.18
     steps:
       *install-and-test
-  test-node-21: # Maintenance, EOL 2024.06.01
+  test-node-22: # LTS, EOL 2027.04.30
     docker:
-      - image: cimg/node:21.7
+      - image: cimg/node:22.12
     steps:
       *install-and-test
-  test-node-22: # Current, EOL 2027.04.30
+  test-node-23: # Current, EOL 2025.06.01
     docker:
-      - image: cimg/node:22.1
+      - image: cimg/node:23.5
     steps:
       *install-and-test
   release:
@@ -59,9 +59,9 @@ workflows:
           <<: *test-filters
       - test-node-20:
           <<: *test-filters
-      - test-node-21:
-          <<: *test-filters
       - test-node-22:
+          <<: *test-filters
+      - test-node-23:
           <<: *test-filters
       - release:
           filters:
@@ -72,5 +72,5 @@ workflows:
           requires:
             - test-node-18
             - test-node-20
-            - test-node-21
             - test-node-22
+            - test-node-23
