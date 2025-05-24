@@ -1,3 +1,5 @@
+/* global module */
+
 module.exports = {
   testMatch: ['<rootDir>/__tests__/**/*.js?(x)'],
   testPathIgnorePatterns: [

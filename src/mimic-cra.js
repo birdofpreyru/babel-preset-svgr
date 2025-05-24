@@ -5,6 +5,8 @@
  * - Path of the original SVG is exposed as the default export.
  */
 
+/* global module, require */
+
 const path = require('path');
 
 /**
@@ -23,7 +25,7 @@ function deduceSourcePath(ops) {
   return sourcePath;
 }
 
-module.exports = function MimicCRA({ types: t }) {
+module.exports = function /* MimicCRA */ ({ types: t }) {
   return {
     visitor: {
       ExportDeclaration(p, state) {

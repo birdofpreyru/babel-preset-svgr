@@ -1,8 +1,10 @@
+/* global __dirname, module */
+
 module.exports = {
   presets: [
     '@babel/env',
-    ["@babel/react", {
-      "runtime": "automatic"
+    ['@babel/react', {
+      runtime: 'automatic',
     }],
     ['../../index', {
       mimicCreateReactApp: {

@@ -1,3 +1,5 @@
+/* global __dirname, module, require */
+
 const { parse } = require('@babel/parser');
 const { transform } = require('@svgr/core');
 
@@ -18,13 +20,13 @@ function cloneFieldOfObjectType(obj, field) {
   return obj[field];
 }
 
-module.exports = function plugin(api, ops) {
+module.exports = function (api, ops) {
   let parser = parse;
   if (ops.parser) {
-    /* eslint-disable global-require, import/no-dynamic-require */
+    /* eslint-disable import/no-dynamic-require */
     parser = require(ops.parser);
     parser = parser.default || parser;
-    /* eslint-enable global-require, import/no-dynamic-require */
+    /* eslint-enable import/no-dynamic-require */
   }
 
   let svgrOptions = ops.svgr || {
