@@ -11,24 +11,24 @@ install-and-test: &install-and-test
 
 version: 2.1
 jobs:
-  test-node-18: # Maintenance, EOL 2025.04.30
-    docker:
-      - image: cimg/node:18.20
-    steps:
-      *install-and-test
   test-node-20: # Maintenance, EOL 2026.04.30
     docker:
-      - image: cimg/node:20.18
+      - image: cimg/node:20.19
     steps:
       *install-and-test
   test-node-22: # LTS, EOL 2027.04.30
     docker:
-      - image: cimg/node:22.12
+      - image: cimg/node:22.16
     steps:
       *install-and-test
-  test-node-23: # Current, EOL 2025.06.01
+  test-node-23: # Maintenance, EOL 2025.06.01
     docker:
-      - image: cimg/node:23.5
+      - image: cimg/node:23.11
+    steps:
+      *install-and-test
+  test-node-24: # Current, EOL 2028.04.30
+    docker:
+      - image: cimg/node:24.1
     steps:
       *install-and-test
   release:
@@ -55,13 +55,13 @@ workflows:
   version: 2
   build:
     jobs:
-      - test-node-18:
-          <<: *test-filters
       - test-node-20:
           <<: *test-filters
       - test-node-22:
           <<: *test-filters
       - test-node-23:
+          <<: *test-filters
+      - test-node-24:
           <<: *test-filters
       - release:
           filters:
@@ -70,7 +70,7 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
           requires:
-            - test-node-18
             - test-node-20
             - test-node-22
             - test-node-23
+            - test-node-24
