@@ -7,7 +7,7 @@
 
 /* global module, require */
 
-const path = require('path');
+const path = require('node:path');
 
 /**
  * Deduces the source path to inject into the component.
