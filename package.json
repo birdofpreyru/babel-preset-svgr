@@ -1,11 +1,11 @@
 {
   "name": "@dr.pogodin/babel-preset-svgr",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "Babel preset for SVG import into React apps.",
   "main": "index.js",
   "scripts": {
     "jest": "jest --no-cache",
-    "lint": "eslint",
+    "lint": "eslint --cache",
     "test": "npm run lint && npm run jest"
   },
   "homepage": "https://dr.pogodin.studio/docs/babel-preset-svgr",
@@ -33,17 +33,17 @@
     "url": "https://github.com/sponsors/birdofpreyru"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0",
-    "@babel/preset-env": "^7.28.0",
-    "@babel/preset-react": "^7.27.1",
-    "@dr.pogodin/eslint-configs": "^0.0.9",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.3.0",
-    "babel-jest": "^30.0.5",
-    "jest": "^30.0.5",
-    "jest-environment-jsdom": "^30.0.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
+    "@dr.pogodin/eslint-configs": "^0.2.7",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "dependencies": {
     "@svgr/core": "^8.1.0",
@@ -52,6 +52,6 @@
     "@svgr/plugin-svgo": "^8.1.0"
   },
   "peerDependencies": {
-    "@babel/parser": "^7.28.0"
+    "@babel/parser": "^7.29.0"
   }
 }
