@@ -5,9 +5,7 @@
  * - Path of the original SVG is exposed as the default export.
  */
 
-/* global module, require */
-
-const path = require('node:path');
+import { relative } from 'node:path';
 
 /**
  * Deduces the source path to inject into the component.
@@ -17,7 +15,7 @@ const path = require('node:path');
 function deduceSourcePath(ops) {
   let sourcePath = ops.sourceFileName;
   if (ops.pathsRelativeTo) {
-    sourcePath = path.relative(ops.pathsRelativeTo, sourcePath);
+    sourcePath = relative(ops.pathsRelativeTo, sourcePath);
   }
   if (ops.pathsTransform) {
     sourcePath = ops.pathsTransform(sourcePath);
@@ -25,7 +23,7 @@ function deduceSourcePath(ops) {
   return sourcePath;
 }
 
-module.exports = function /* MimicCRA */ ({ types: t }) {
+export default function /* MimicCRA */ ({ types: t }) {
   return {
     visitor: {
       ExportDeclaration(p, state) {
@@ -49,4 +47,4 @@ module.exports = function /* MimicCRA */ ({ types: t }) {
       },
     },
   };
-};
+}

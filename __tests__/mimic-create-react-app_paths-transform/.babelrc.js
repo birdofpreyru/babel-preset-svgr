@@ -3,9 +3,7 @@
 module.exports = {
   presets: [
     '@babel/env',
-    ['@babel/react', {
-      runtime: 'automatic',
-    }],
+    '@babel/react',
     ['../../index', {
       mimicCreateReactApp: {
         pathsRelativeTo: __dirname,

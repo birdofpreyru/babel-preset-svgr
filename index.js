@@ -1,7 +1,9 @@
-/* global __dirname, module, require */
+import { createRequire } from 'node:module';
 
-const { parse } = require('@babel/parser');
-const { transform } = require('@svgr/core');
+import { parse } from '@babel/parser';
+import { transform } from '@svgr/core';
+
+const require = createRequire(import.meta.url);
 
 /**
  * Clones the specified object field (or assigns an empty object to the field,
@@ -20,7 +22,7 @@ function cloneFieldOfObjectType(obj, field) {
   return obj[field];
 }
 
-module.exports = function (api, ops) {
+export default function (api, ops) {
   let parser = parse;
   if (ops.parser) {
     /* eslint-disable import/no-dynamic-require */
@@ -54,7 +56,7 @@ module.exports = function (api, ops) {
     let d = cloneFieldOfObjectType(svgrOptions, 'jsx');
     d = cloneFieldOfObjectType(d, 'babelConfig');
     d.plugins = [
-      [`${__dirname}/src/mimic-cra`, mimicCraOps],
+      [`${import.meta.dirname}/src/mimic-cra`, mimicCraOps],
       ...d.plugins || [],
     ];
   }
@@ -86,4 +88,4 @@ module.exports = function (api, ops) {
       },
     }],
   };
-};
+}
