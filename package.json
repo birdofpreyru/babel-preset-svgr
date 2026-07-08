@@ -53,5 +53,8 @@
   },
   "peerDependencies": {
     "@babel/parser": "^7.29.0"
+  },
+  "engines": {
+    "node": ">=24"
   }
 }
