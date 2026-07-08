@@ -1,5 +1,7 @@
 /* global __dirname, module, require */
 
+const { hash } = require('node:crypto');
+
 const { parse } = require('@babel/parser');
 const { transform } = require('@svgr/core');
 
@@ -29,54 +31,70 @@ module.exports = function (api, ops) {
     /* eslint-enable import/no-dynamic-require */
   }
 
-  let svgrOptions = ops.svgr || {
-    plugins: [
-      '@svgr/plugin-svgo',
-      '@svgr/plugin-jsx',
-      '@svgr/plugin-prettier',
-    ],
-    svgoConfig: {
-      plugins: [{
-        name: 'preset-default',
-        params: {
-          overrides: {
-            removeViewBox: false,
+  const calcOptions = (idPrefix) => {
+    let svgrOptions = ops.svgr || {
+      plugins: [
+        '@svgr/plugin-svgo',
+        '@svgr/plugin-jsx',
+        '@svgr/plugin-prettier',
+      ],
+      svgoConfig: {
+        plugins: [{
+          name: 'preset-default',
+          params: {
+            overrides: {
+              removeViewBox: false,
+            },
           },
-        },
-      }],
-    },
+        }, {
+          name: 'prefixIds',
+          params: {
+            prefix: idPrefix,
+          },
+        }],
+      },
+    };
+
+    const mimicCraOps = {};
+    if (ops.mimicCreateReactApp) {
+      Object.assign(mimicCraOps, ops.mimicCreateReactApp);
+      svgrOptions = { ...svgrOptions };
+      let d = cloneFieldOfObjectType(svgrOptions, 'jsx');
+      d = cloneFieldOfObjectType(d, 'babelConfig');
+      d.plugins = [
+        [`${__dirname}/src/mimic-cra`, mimicCraOps],
+        ...d.plugins || [],
+      ];
+    }
+
+    {
+      // SVGR 6.5.0 (adopted in the v1.5.0 of this preset) added role="img"
+      // attribute to generated SVGs, which was considered a breaking change.
+      // However, SVGR 6.5.1 reverted that, and removed role attrbute from
+      // generated SVGs, unless opted-in explicitly via svgProps.role option.
+      // To avoid unnecessary revert of a breaking change, we just default
+      // svgProps.role option to "img", thus keeping adding role="img" by default.
+      const p = svgrOptions.svgProps;
+      if (!p) svgrOptions.svgProps = { role: 'img' };
+      else if (p.role === undefined) p.role = 'img';
+    }
+
+    return { mimicCraOps, svgrOptions };
   };
-
-  const mimicCraOps = {};
-  if (ops.mimicCreateReactApp) {
-    Object.assign(mimicCraOps, ops.mimicCreateReactApp);
-    svgrOptions = { ...svgrOptions };
-    let d = cloneFieldOfObjectType(svgrOptions, 'jsx');
-    d = cloneFieldOfObjectType(d, 'babelConfig');
-    d.plugins = [
-      [`${__dirname}/src/mimic-cra`, mimicCraOps],
-      ...d.plugins || [],
-    ];
-  }
-
-  {
-    // SVGR 6.5.0 (adopted in the v1.5.0 of this preset) added role="img"
-    // attribute to generated SVGs, which was considered a breaking change.
-    // However, SVGR 6.5.1 reverted that, and removed role attrbute from
-    // generated SVGs, unless opted-in explicitly via svgProps.role option.
-    // To avoid unnecessary revert of a breaking change, we just default
-    // svgProps.role option to "img", thus keeping adding role="img" by default.
-    const p = svgrOptions.svgProps;
-    if (!p) svgrOptions.svgProps = { role: 'img' };
-    else if (p.role === undefined) p.role = 'img';
-  }
 
   return {
     plugins: [{
       parserOverride(codeOrSvg, opts) {
         let code = codeOrSvg;
         if (opts.sourceFileName.endsWith('.svg')) {
+          const prefix = hash('shake128', codeOrSvg, {
+            outputLength: 3,
+          });
+
+          const { mimicCraOps, svgrOptions } = calcOptions(prefix);
+
           mimicCraOps.sourceFileName = opts.sourceFileName;
+
           code = transform.sync(codeOrSvg, svgrOptions, {
             componentName: 'SvgComponent',
             filePath: opts.sourceFileName,
