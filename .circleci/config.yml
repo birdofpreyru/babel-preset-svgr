@@ -35,7 +35,7 @@ jobs:
 
       - run: |
           export NPM_ID_TOKEN=$(circleci run oidc get --claims '{"aud": "npm:registry.npmjs.org"}')
-          npm publish --access public --tag v1
+          npm publish --access public --tag maintenance
 
 test-filters: &test-filters
   filters:
